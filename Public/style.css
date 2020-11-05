@@ -1,0 +1,258 @@
+*{
+    font-family: 'Eagle Lake', cursive;
+   
+}
+#StartHome{
+    background-image:url(imagenes/The_known_world_HBO.jpg);
+    color:white;
+    background-size: 1600px;
+    background-position:top;
+    
+}
+#Game {
+    background-image:url(imagenes/Fondo\ resultados.jpg);;
+    color:white;
+    background-size: 600px;
+    
+
+    background-position:top;
+    
+}
+#End{
+    background-image:url(imagenes/Fondo\ resultados.jpg);;
+    color:white;
+    background-size: 600px;
+    background-position:
+}
+
+
+.Logo{
+
+    height: 75px;
+
+}
+.Logo img{
+    
+    height: 75px;
+    
+}
+
+
+h1{
+    color: rgb(236, 236, 236);
+    text-align: center;
+    font-size: 25px;
+}
+
+.Principal{
+    padding:0;
+    margin:0;
+    margin-top: 70px;
+ 
+    width:100vw;
+    height: 100vw;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+
+
+.menuGame{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+}
+
+
+
+/* BOTON START */
+
+.btnPlay{
+    background:linear-gradient(120deg, burlywood, peru, burlywood);
+    color:#000 ;
+    text-decoration: none;
+    margin: 1rem;
+    
+    font-size: 1.5rem;
+    padding: 0.5rem 0;
+    width: 200px;
+    border:1px solid #fff;
+    border-radius:3px;
+    text-align: center;
+
+}
+.btnPlay:hover{
+    cursor:pointer;
+    transform: scale(1.15);
+}
+
+
+.buttonA{
+    background:linear-gradient(120deg, burlywood, peru, burlywood);
+    color:#000 ;
+    text-decoration: none;
+    margin: 0.2rem;
+    
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 350px;
+    border:1px solid #fff;
+    border-radius:3px;
+    text-align: center;
+    
+}
+
+/* Preguntas  */
+
+.legend{
+    margin-bottom: 20px;
+    text-align:center;
+    color: rgb(255, 183, 88);
+}
+
+.AnswersContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+/* CORRECTAS E INCORRECTAS */
+
+.green{
+    background:linear-gradient(120deg,green,darkgreen,green);
+    color:#000 ;
+    text-decoration: none;
+    margin: 0.2rem;
+    
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 350px;
+    border:1px solid #fff;
+    border-radius:3px;
+    text-align: center;
+}
+.green:hover{
+    cursor:pointer;
+    transform: scale(1.05);
+}
+
+.red{
+    background:linear-gradient(120deg,red,darkred,red);
+    color:#000 ;
+    text-decoration: none;
+    margin: 0.2rem;
+    
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 350px;
+    border:1px solid #fff;
+    border-radius:3px;
+    text-align: center;
+}
+.red:hover{
+    cursor:pointer;
+    transform: scale(1.05);
+}
+
+
+/* PANTALLA FINAL */
+
+.Principal2{
+    padding:0;
+    width:90vw;
+    height: 100vw;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    margin-left: 10px;
+    text-align: center;
+    
+ 
+}
+
+h3{
+    color: rgb(255, 183, 88);
+}
+
+h3#Maker{
+    
+    color: rgb(236, 236, 236);
+}
+
+#MakerContent{
+   
+    display:flex;
+    flex-direction: column;
+    align-content:center;
+    text-align:center;
+    margin-top: 20vw;
+    
+
+}
+#email{
+    
+    background-color:rgb(236, 236, 236);
+    border-radius:3px;
+    text-align: center;
+    width: 65vw;
+    
+    margin-left: 15vw;
+}
+
+#RePlay{
+    
+    margin: 0.5rem;
+  
+}
+.RePlay{
+  background:linear-gradient(120deg, burlywood, peru, burlywood);
+  color:#000 ;
+  text-decoration: none;
+
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+  width: 200px;
+  border:1px solid #fff;
+  border-radius:3px;
+  text-align: center;
+}
+.btnRePlay:hover{
+    cursor:pointer;
+    transform: scale(1.2);
+}
+
+#RegistroResultado{
+    display:flex;
+    flex-direction: column;
+}
+#nickNameBox{
+    height: 30px;
+
+    text-align: center;
+    border:1px solid #fff;
+    border-radius:5px;
+    margin-top: 10px;
+    margin-left: 3vw;
+}
+#buttonResult{
+    background:linear-gradient(120deg, rgb(207, 198, 187), rgb(109, 104, 98),  rgb(207, 198, 187));
+    color:#000 ;
+    text-decoration: none;
+    margin: 1rem;
+    
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    width: 200px;
+    border:1px solid #fff;
+    border-radius:5px;
+    text-align: center;
+
+}
+.btnPlay:hover{
+    cursor:pointer;
+    transform: scale(1.15);
+}
+

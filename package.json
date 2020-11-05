@@ -1,0 +1,25 @@
+{
+  "name": "quiz_node_firebase",
+  "version": "1.0.0",
+  "description": "quiz con node y firebase",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisVegas88/Quiz_Node_Firebase.git"
+  },
+  "author": "Luis Vegas",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/LuisVegas88/Quiz_Node_Firebase/issues"
+  },
+  "homepage": "https://github.com/LuisVegas88/Quiz_Node_Firebase#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase": "^8.0.0"
+  }
+}

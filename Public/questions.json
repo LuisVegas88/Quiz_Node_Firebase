@@ -1,0 +1,63 @@
+{
+    "Preguntas": [
+        {
+            "Q": "¿Quién es el primero en la serie en matar a un caminante blanco?",
+            "A" : ["Jon Nieve", "Sam Tarly","Bran Stark", "Lord Mormont"],
+            "Correct": "1"
+        }
+        ,
+        {
+            "Q": "¿Cómo se llaman los dragones de Daenerys?",
+            "A" : ["Drogon, Valerion y Rhego", "Drogon, Rhaezal y Viserion","Drogon, Rhaegal y Viserion","Drakos, Valerion y Rhego"],
+            "Correct":"2"
+        },
+        {
+            
+            "Q" : "¿Quién corta la mano a Jaime Lannister?",
+            "A" : ["Vargo Hoat","Brienne de Tarth","Roose Bolton","Robb Stark"],
+            "Correct":"0"
+        },
+        {
+            
+            "Q" : "¿Cómo se llama la espada de Jon Nieve?",
+            "A" : ["Arrancacorazones","Lamento de Viuda", "Anduril", "Garra"],
+            "Correct":"3"
+        }, 
+        {
+            "Q" : "¿Qué casas se enfrentan en la Batalla de los Bastardos",
+            "A" : ["Stark y Targaryen", "Bolton y Targaryen", "Grejoy y Stark", "Stark y Bolton"],
+            "Correct": "3"
+        }, 
+        {
+            "Q" : "¿Cúal de estos no es un apellido de bastardo",
+            "A" : ["Fuego", "Flores", "Arena", "Pyke"],
+            "Correct": "0"
+        },
+        {
+            "Q" : "¿Qué dios no es adorado en poniente?",
+            "A" : ["R´hllor", "El Dios de los Mil Rostros", "El Dios Ahogado", "El Padre"],
+            "Correct": "1"
+        }, 
+        {
+            "Q": "¿Qué relación de parentesco tienen Benjen y Ned Stark?",
+            "A" : ["Cuñados","Sobrino/Tio", "Primos", "Hermanos"],
+            "Correct": "3"
+        }, 
+        {
+            "Q": "¿Cómo muere Robert Baratheon?",
+            "A": ["Ataque de un jabalí", "De viejo", "En la Batalla del Aguasnegras", "Envenenado por Cersei"],
+            "Correct": "0"
+        },
+        {
+            "Q": "¿Quien es hijo/a de Lyanna Stark y Rhaegar Targaryen?",
+            "A": ["Daenerys", "Aegon","Jon Nieve", "Robb"],
+            "Correct": "2"
+        }
+    ],
+
+    "numberOfQuestions" : 10
+
+}
+
+
+
