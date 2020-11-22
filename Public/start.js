@@ -42,7 +42,8 @@ document.getElementById("btnEdit").addEventListener("click", function(event){
                     },
                     body: JSON.stringify(User),
                     }
-                ).then(res => {
+                )
+                .then(res => {
                     if (res.redirected) ///si la respuesta me redirecciona le doy la url que le di en Front
                         window.location.href = res.url;
                 });
@@ -94,7 +95,18 @@ document.getElementById("btnSubmit").addEventListener("click", function(event){
                         }
                     )
                         .then(response => response.text())
-                        .then(data => console.log(data))
+                        // .then(data => console.log(data))
+                        .then(data =>
+                            fetch ("http://localhost:8888/login",{
+                                method: 'POST',
+                                headers: {
+                                    'Access-Control-Allow-Origin' : '*',
+                                    'Access-Control-Allow-Headers' : '*',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(data),
+                                }
+                            ))
                         .then(console.log("Usuario Registrado,vamos allá¡"))
                         .then(window.location = "quiz.html")
                         

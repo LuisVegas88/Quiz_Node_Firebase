@@ -14,6 +14,88 @@ const server = express();
 
 const listenPort = 8888;
 
+////Dependencias JWT////
+
+const cookieParser = require ("cookie-parser");
+
+const base64 = require ("base-64");
+
+const crypto = require("crypto");
+const { RSA_NO_PADDING } = require('constants');
+////Variables Globales////
+
+// const SECRET = crypto.randomBytes(16).toString("hex");
+
+const SECRET = "3bc68ddc2746a9bd40a4f815486561f7";
+
+// console.log(SECRET);
+
+////MIDDLEWARES////
+
+server.use(cors());
+
+server.use(cookieParser());
+
+//MODULO PARSEO DE LOS JSON QUE LLEGAN AL SERVIDOR
+server.use(bodyParser.urlencoded({extended:false}));
+
+server.use(bodyParser.json());
+
+////FUNCIONES DE JWT////
+function parseBase64(base64String) {
+    const parsedString = base64String.replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_").toString("base64");
+    return parsedString; //Para quitar los + y cambiarlos por un - y los = del código base64.
+}
+
+function encodeBase64(string) {
+    const encodedString = base64.encode(string);
+    const parsedString = parseBase64(encodedString);
+    return parsedString;
+}
+
+function decodeBase64(base64String) {
+    const decodedString = base64.decode(base64String);
+    return decodedString;
+}
+
+function hash(string, key = SECRET) {
+    const hashedString = parseBase64(crypto.createHmac("sha256", key).update(string).digest("base64"));
+    return hashedString;
+}
+
+function generateJWT(Payload) {
+    const header = {
+        "alg": "HS256",
+        "typ": "JWT"
+    };
+    const base64Header = encodeBase64(JSON.stringify(header));
+    const base64Payload = encodeBase64(JSON.stringify(Payload));
+    const signature = parseBase64(hash(`${base64Header}.${base64Payload}`));
+
+    const JWT = `${base64Header}.${base64Payload}.${signature}`;
+    return JWT;
+}
+function verifyJWT(jwt) {
+    const [header, payload, signature] = jwt.split(".");
+    if (header && payload && signature) {
+        const expectedSignature = parseBase64(hash(`${header}.${payload}`));
+        if (expectedSignature === signature)
+            return true;
+    }
+}
+function encryptPassword(string, salt = crypto.randomBytes(128).toString("hex")) {
+    let saltedPassword = hash(salt + string + salt, SECRET);
+    console.log(saltedPassword);
+    return { password: saltedPassword, salt };
+}
+
+function verifyPassword(string, realPassword) {
+    return encryptPassword(string, realPassword.salt).password === realPassword.password;
+
+}
+
+
+
 /////IMPORTAR MI CARPETA CON EL FRONT-END////////
 const staticFilesPath = express.static('Public');
 server.use(staticFilesPath);
@@ -167,7 +249,7 @@ server.post('/loginAdmin', (req, res) => {
             {
                 if (email !== contenido.email)
                 {///Falla el usuario
-                    res.send("Usuario incorrecto");
+                    res.send("Introduce Usuario");
                 }
                 else
                 {
@@ -187,7 +269,7 @@ server.post('/loginAdmin', (req, res) => {
         });
     })
         
-/////LOGIN PLAYERS/////
+/////LOGIN PLAYERS///// con encriptacion JWT
 
 server.post('/loginPlayers', (req, res) => {
 
@@ -201,7 +283,7 @@ server.post('/loginPlayers', (req, res) => {
         Players.once("value",(snapshot) => {
 
             let email = req.body.email;
-            let pass = req.body.pass;
+            let pass = encryptPassword(req.body.pass);
             let birthdate = req.body.birthdate;
 
             let users = snapshot.val();
@@ -213,7 +295,9 @@ server.post('/loginPlayers', (req, res) => {
             }
 
             if(!users || !Object.values(users).filter(user => user.email === email).length)
-            { 
+            {   
+                let JWT = generateJWT({email, ip: req.ip});
+                res.cookie("jwt", JWT, { httpOnly: true } )
                 Players.push(newPlayer);
                 res.send("¡Usuario registrado!");
                 console.log("Su Usuario ha sido registrado¡")
@@ -228,7 +312,46 @@ server.post('/loginPlayers', (req, res) => {
     }
 })
 
+///Login para checkear el JWT
+server.post("/login", (req, res) => {
+    let Players = firebase.database().ref('/Players');
+        Players.once("value",(snapshot) => {
 
+            let pass = encryptPassword(req.body.pass);
+           
+            realPassword= {
+                password,
+                salt
+            }
+        //If a JWT was sent, we check it
+        if (JWT) {
+            //If the JWT was verified, I sent them the info, if not, clear the cookie
+            if (verifyJWT(JWT))
+                res.send(getJWTInfo(JWT));
+            else {
+                res.clearCookie("jwt");
+                res.send({ msg: "invalid session" });
+            }
+        }
+        else {
+            //The JWT was not sent, so we are going to try with login and password
+            if (verifyPassword(pass, realPassword)) {
+                let payload = { email, ip: req.ip };
+                //If the password is the same as the stored, generate new JWT with info and send it
+                JWT = generateJWT(payload);
+                res.cookie("jwt", JWT, { "httpOnly": true });
+                res.send(payload);
+            }
+            else {
+                //If not JWT and no correct login sent, don't do nothing
+                res.send({ msg: "Incorrect username of password" });
+            }
+        }
+    })
+});
+
+
+// encryptPassword();
 ////////INICIAMOS EL SERVER////////
 server.listen(listenPort, () => {console.log(`server listening on port ${listenPort}`)});
 
