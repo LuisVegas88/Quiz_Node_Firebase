@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap" rel="stylesheet">
+    <script src="fontawesome.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Quiz Home</title>
 </head>
 <body id="StartHome">
+<main>
+    <!-- Boton START Y CABECERA -->
 
     <div class="Principal">
         <div class="Logo">
@@ -16,19 +20,43 @@
         <div>
             <h2>FrikiTrivial</h2>
         </div>
-            <a class= "btnPlay" href="quiz.html">Start</a>
+            <a  id= "btnPlay" >Start</a>
         </div>
+    
+    <!-- LOGIN JUGADORES POPUP -->
+
+    <div class="bg-modal">
+        <div class="modal-contents">
+    
+            <form class="formLogin">
+                <input id="emailU" type="email" value="vegmenU@gmail.com" placeholder="Email">
+                <input id="passwordU" type="password" value="qwerty" placeholder="Password">
+                <input id="date" type="date" value="1988-09-29">
+               
+            </form>
+            <div id ="BtnRegisterBack">
+                <a href="quiz.html" id="btnSubmit">Submit</a>
+                <a href="start.html" id="bntToStart2"> <i class="fas fa-undo-alt" id="backIcon2" ></i></a> 
+            </div>
+        </div>
+         
+    </div>
+    
+    <!-- LOGIN ADMINISTRADOR crear y borrar PREGUNTAS -->
 
         <div id="MakerContent">
             <h3 id="Maker">FrikiTrivialMaker</h3>
-            <input type="email" id="email" placeholder= "Introduce tu email">
+            <input type="input" value="vegmen@gmail.com" id="email" placeholder= "Introduce tu email">
+            <input type="password" value="2988" id="password" placeholder= "Contraseña">
+            
+            <button type="submit" id="btnEdit">Editar</button>
         </div>
-        
 
-    </div>
-    
-    
-
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
    
+    <script src="start.js"></script>
+
+</main>
 </body>
 </html>

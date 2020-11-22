@@ -10,7 +10,7 @@ function Resultado(){
 
 function ImagenResultado(){
 
-    if(localStorage.getItem("Aciertos") < 6 ){
+    if(localStorage.getItem("Aciertos") < 7 ){
 
     document.getElementById("ImagenResultado").innerHTML='<img src="imagenes/YouKnowNothing.gif" />'
     
@@ -20,24 +20,24 @@ function ImagenResultado(){
     }
 }
 
-function RegistroResultado(){
-    let RegistroResultado = document.getElementById("RegistroResultado")
-    let nickNameBox = document.createElement("input")
-    let sendUser = document.createElement("button")
+// function RegistroResultado(){
+//     let RegistroResultado = document.getElementById("RegistroResultado")
+//     let nickNameBox = document.createElement("input")
+//     let sendUser = document.createElement("button")
 
-    nickNameBox.setAttribute("id", "nickNameBox");
-    nickNameBox.setAttribute("type","text");
-    nickNameBox.setAttribute("placeholder", "Usuario");
+//     nickNameBox.setAttribute("id", "nickNameBox");
+//     nickNameBox.setAttribute("type","text");
+//     nickNameBox.setAttribute("placeholder", "Usuario");
 
-    sendUser.setAttribute("id", "sendUser");
-    sendUser.setAttribute("id", "buttonResult");
+//     sendUser.setAttribute("id", "sendUser");
+//     sendUser.setAttribute("id", "buttonResult");
 
-    sendUser.innerText = "Enviar Resultado"
+//     sendUser.innerText = "Enviar Resultado"
 
-    RegistroResultado.appendChild(nickNameBox);
-    RegistroResultado.appendChild(sendUser);
-}
+//     RegistroResultado.appendChild(nickNameBox);
+//     RegistroResultado.appendChild(sendUser);
+// }
 
 Resultado()
 ImagenResultado()
-RegistroResultado()
+// RegistroResultado()

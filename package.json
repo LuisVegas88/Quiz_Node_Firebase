@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/LuisVegas88/Quiz_Node_Firebase#readme",
   "dependencies": {
+    "base-64": "^1.0.0",
+    "bootstrap": "^4.5.3",
+    "bootstrap-icons": "^1.1.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase": "^8.0.0"
